@@ -1,19 +1,10 @@
 // aqui exportaras las funciones que necesites
+import { onNavigate } from './main.js';
+export const Home = 
+ `<div>
+  <button id="register">Registrate</button>
+  <button id="startSesion">Inicia Sesión</button>
+  </div>`;
+  const register = document.getElementById("register");
+  register.addEventListener("click", ()=> onNavigate('/Register'));
 
-export const Home = () => {
-  
-/*const homeDiv = document.createElement('div');
-    const btnRegi = document.createElement('button');
-    const btnLogin = document.createElement('button');
-    
-    btnRegister.textContent = 'Registrate';
-    btnLogin.textContent = 'Inicia Sesión';
-    
-    homeDiv.appendChild(btnRegister);
-    homeDiv.appendChild(btnLogin);*/
-
-    let homeDiv = `<div><button>Registrate</button><button>Inicia Sesión</button></div>`
-  
-  return homeDiv;
-};
-///console.log('Hola mundo!');
