@@ -1,15 +1,15 @@
 /* eslint-disable import/no-cycle */
 import { Home } from './components/Home.js';
 import { Register } from './components/Register.js';
-import { Login } from './components/Login.js';
 
 const rootDiv = document.getElementById('root');
 
 const routes = {
   '/': Home,
   '/register': Register,
-  '/login': Login,
 };
+
+const component = routes[window.location.pathname];
 
 export const onNavigate = (pathname) => {
   window.history.pushState(
@@ -24,8 +24,6 @@ export const onNavigate = (pathname) => {
 
   rootDiv.appendChild(routes[pathname]());
 };
-
-const component = routes[window.location.pathname];
 
 window.onpopstate = () => {
   rootDiv.appendChild(component());
