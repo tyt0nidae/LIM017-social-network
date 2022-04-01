@@ -5,6 +5,6 @@ export const Home =
   <button id="register">Registrate</button>
   <button id="startSesion">Inicia Sesión</button>
   </div>`;
-  const register = document.getElementById("register");
-  register.addEventListener("click", ()=> onNavigate('/Register'));
+  //document.getElementById("register");
+  //register.addEventListener("click", ()=> onNavigate('/Register'));
 
