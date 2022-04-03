@@ -2,10 +2,141 @@
     margin: 0;
     padding: 0;
 }
-.portada {
-width: 60px;
-height: 60px;
-}
+/*
 .portada img{
-    width: 100%;
+width: 100%;
+}*/
+#root{
+    justify-content: center;
+    height: 767px;
 }
+.portada, .portadaDos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    height: 767px;
+    justify-content: center;
+    background-image: url(../img/bigsmall.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: aliceblue;
+    background-position: center center;
+    font-family: 'Suez One';
+}
+.portadaDos{
+    height: 1045px;
+}
+.portada p {
+    font-size: 20px;
+}
+.logoImg {
+    width: 270px;
+    padding-left: 30px
+}
+.firstBtns{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.firstBtns button{
+    font-family: 'Suez One';
+    font-size: 22px;
+    background:none;
+    border: 0;
+    color: white;
+    margin: 10px;
+}
+.signin {
+    background-image: url(../img/bgcolor.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 330px;
+    margin-bottom: 20px;
+}
+.entrar #startSesion{
+    font-family: 'Suez One';
+    border: 0px;
+    border-radius: 100px;
+    height: 30px;
+    width: 100px;
+    margin: 20px;
+    color: white;
+    background-color: rgba(254, 99, 95, 0.72);
+    font-size: 20px;
+}
+.entrar #startSesion:hover, #regpage:hover {
+    background-color: rgba(193, 70, 66, 0.941);
+}
+.entrar #regpage{
+    font-family: 'Suez One';
+    border: 0px;
+    border-radius: 100px;
+    height: 30px;
+    width: 150px;
+    margin: 20px;
+    color: white;
+    background-color: rgba(254, 99, 95, 0.72);
+    font-size: 20px;
+}
+#goBack{
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: aliceblue;
+}
+.firstBtns :hover{
+    color: #031A29;
+}
+.loginInputs input{
+    font-family: Google Sans Text,Arial,Helvetica,sans-serif;
+    font-size: 18px ;
+    background-color: rgba(225, 202, 183, 0);
+    border: 0;
+
+}
+.fa-solid{
+    margin: 6px;
+    margin-top: 11px;
+}
+.password, .user, .place, .date, .language {
+    padding: 5px;
+    border-radius: 15px;
+    margin: 10px;
+    width: 258px;
+    height: 40px;
+    background-color: rgba(225, 202, 183, 0.49);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.loginInputs input:focus-visible {
+    outline: 0px;
+}
+.portada a{
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+.portada a :hover{
+    opacity: 0.8;
+}
+.portada a img{
+    width: 220px;
+}
+
+.loginInputs input::placeholder{
+    color: white;
+}
+.extBtns, .entrar, .loginInputs, .forgetpw, .logo{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.logo{
+    margin: 20px;
+}
+
+

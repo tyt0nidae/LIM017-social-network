@@ -3,14 +3,35 @@ import { onNavigate } from '../main.js';
 
 export const Home = () => {
   const divHome = document.createElement('div');
-  const homePage = `<p>Encuentra tu camino viajero</p>
-  <button>Iniciar Sesión</button><button id="register">Registrate</button>
+  divHome.classList.add('portada');
+  const homePage = `<img class="logoImg" src="../img/Logo.png">
+  <p>Encuentra tu camino viajero</p>
+  <div class="signin">
+  <div class="firstBtns">
+  <button>Iniciar Sesión</button>
+  <button id="register">Registrate</button>
+  </div>
+  <div class="loginInputs">
+  <div class="user">
+  <i class="fa-solid fa-user"></i>
   <input type="text" placeholder="Usuario/correo electrónico"></imput>
+  </div>
+  <div class="password">
+  <i class="fa-solid fa-lock"></i>
   <input type="text" placeholder="Contraseña"></imput>
+  </div>
+  </div>
+  <div class="entrar">
   <button id="startSesion">Entrar</button>
+  </div>
+  <div class="forgetpw">
   <a href="">¿Olvidaste tu contraseña?</a>
-  <a href="" class="fbBtn">Ingresar con Facebook</a>
-  <a href="" class="ggBtn">Ingresar con Google</a>`;
+  </div>
+  <div class="extBtns">
+  <a href="" class="fbBtn"><img src="../img/fbbtn.png"></a>
+  <a href="" class="ggBtn"><img src="../img/googlebtn.png"></a>
+  </div>
+  </div>`;
   divHome.innerHTML = homePage;
   divHome.querySelector('#register').addEventListener('click', () => onNavigate('/register'));
   return divHome;
