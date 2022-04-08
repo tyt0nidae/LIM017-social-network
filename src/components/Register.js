@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+import { registerWithEmailAndPassword } from './auth.js'
 
 export const Register = () => {
   const registerDiv = document.createElement('div');
@@ -13,11 +14,11 @@ export const Register = () => {
   <div class="loginInputs">
   <div class="user">
   <i class="fa-solid fa-user"></i>
-    <input type="email" placeholder="Crea un usuario/correo electrónico"></imput>
+    <input type="email" id="registerEmail" placeholder="Crea un usuario/correo electrónico"></imput>
   </div>
   <div class="password">
   <i class="fa-solid fa-lock"></i>
-    <input type="password" placeholder="Crea una contraseña"></imput>
+    <input type="password" id="registerPassword" placeholder="Crea una contraseña"></imput>
   </div>
   <div class="password">
   <i class="fa-solid fa-lock"></i>
@@ -53,6 +54,14 @@ export const Register = () => {
   </div>
   </div>`;
   registerDiv.innerHTML = registerBtn;
+
+  
+  registerDiv.querySelector('#regpage').addEventListener('click', () => {
+    const registerWithE = registerDiv.querySelector('#registerEmail').value;
+    const registerWithP = registerDiv.querySelector('#registerPassword').value;
+    registerWithEmailAndPassword(registerWithE, registerWithP);
+    
+  })
 
   registerDiv.querySelector('#goBack').addEventListener('click', () => onNavigate('/'));
   return registerDiv;
