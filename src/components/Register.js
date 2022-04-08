@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { registerWithEmailAndPassword } from './auth.js'
+import { registerWithEmailAndPassword } from './Auth.js'
 
 export const Register = () => {
   const registerDiv = document.createElement('div');
