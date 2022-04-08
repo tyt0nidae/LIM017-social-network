@@ -14,15 +14,15 @@ export const Home = () => {
   <div class="loginInputs">
   <div class="user">
   <i class="fa-solid fa-user"></i>
-  <input type="text" placeholder="Usuario/correo electrónico"></imput>
+  <input type="text" id="userEmailLogin" placeholder="Usuario/correo electrónico"></imput>
   </div>
   <div class="password">
   <i class="fa-solid fa-lock"></i>
-  <input type="text" placeholder="Contraseña"></imput>
+  <input type="text" id="userPasswordLogin" placeholder="Contraseña"></imput>
   </div>
   </div>
   <div class="entrar">
-  <button id="startSesion">Entrar</button>
+  <button type="submit" id="startSesion">Entrar</button>
   </div>
   <div class="forgetpw">
   <a href="">¿Olvidaste tu contraseña?</a>
@@ -33,6 +33,13 @@ export const Home = () => {
   </div>
   </div>`;
   divHome.innerHTML = homePage;
+  const loginSesion = divHome.querySelector('#startSesion').addEventListener('click', (e)=>{
+    const userEmailL= divHome.querySelector('#userEmailLogin').value;
+  const userPaswordL= divHome.querySelector('#userPasswordLogin').value;
+  })
+  
+
+
   divHome.querySelector('#register').addEventListener('click', () => onNavigate('/register'));
   return divHome;
 };

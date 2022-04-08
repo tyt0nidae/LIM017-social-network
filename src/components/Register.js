@@ -48,7 +48,7 @@ export const Register = () => {
     <input type="text" placeholder="Idiomas aprendidos"></imput>
   </div>
   <div class="entrar">
-    <button id="regpage">Registrarse</button>
+    <button type="submit" id="regpage">Registrarse</button>
     <button id="goBack"><i class="fa-solid fa-circle-chevron-left"></i></button>
   </div>
   </div>`;
