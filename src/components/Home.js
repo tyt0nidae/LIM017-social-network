@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
+
 export const Home = () => {
   const divHome = document.createElement('div');
   divHome.classList.add('portada');
@@ -32,7 +33,10 @@ export const Home = () => {
   <a href="" class="ggBtn"><img src="../img/googlebtn.png"></a>
   </div>
   </div>`;
+
   divHome.innerHTML = homePage;
+  
+
   divHome.querySelector('#register').addEventListener('click', () => onNavigate('/register'));
   return divHome;
 };
