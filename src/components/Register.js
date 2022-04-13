@@ -1,8 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { registerWithEmailAndPassword, registerWithGoogle } from './Auth.js'
-import { SaveDataUser } from './confi.js'
-
+import { registerWithEmailAndPassword, registerWithGoogle } from './Auth.js';
+import { SaveDataUser } from './confi.js';
 
 export const Register = () => {
   const registerDiv = document.createElement('div');
@@ -63,7 +62,6 @@ export const Register = () => {
   registerDiv.innerHTML = registerBtn;
 
   registerDiv.querySelector('#regpage').addEventListener('click', () => {
-
     const email = registerDiv.querySelector('#registerEmail').value;
     const registerWithP = registerDiv.querySelector('#registerPassword').value;
     const passwordR = registerDiv.querySelector('#password2').value;
@@ -71,7 +69,7 @@ export const Register = () => {
     const messageErrorp = registerDiv.querySelector('#errorMessageP');
     const messageErrorP2 = registerDiv.querySelector('#errorNoMatchP');
     const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d]){6,20}$/;
-    if (registerWithE === '') {
+    if (email === '') {
       messageError.innerHTML = 'Ingrese un correo electronico valido';
     } else {
       messageError.remove();
@@ -92,13 +90,10 @@ export const Register = () => {
     const gender = registerDiv.querySelector('#gender');
     const dateBirth = registerDiv.querySelector('#dateBirth');
 
+    SaveDataUser(userName.value, lastName.value, gender.value, email, dateBirth.value);
 
-    SaveDataUser(userName.value,lastName.value,gender.value, email, dateBirth.value);
-    
     registerWithEmailAndPassword(email, registerWithP);
-    
   });
-
 
   const registerWithGg = registerDiv.querySelector('#googleR');
   registerWithGg.addEventListener('click', () => {
@@ -106,6 +101,5 @@ export const Register = () => {
   });
 
   registerDiv.querySelector('#goBack').addEventListener('click', () => onNavigate('/'));
-  
   return registerDiv;
 };

@@ -2,7 +2,6 @@
 import { onNavigate } from '../main.js';
 import { loginWithEmailPassword } from './Auth.js';
 
-
 export const Home = () => {
   const divHome = document.createElement('div');
   divHome.classList.add('portada');
@@ -45,6 +44,6 @@ export const Home = () => {
   });
 
   divHome.querySelector('#register').addEventListener('click', () => onNavigate('/register'));
-  divHome.querySelector('#startSesion').addEventListener('click', ()=> onNavigate('/profile'));
+  divHome.querySelector('#startSesion').addEventListener('click', () => onNavigate('/profile'));
   return divHome;
 };
