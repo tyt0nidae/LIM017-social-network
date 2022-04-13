@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-
+import { loginWithEmailPassword } from './Auth.js';
 
 
 export const Home = () => {
@@ -24,18 +24,25 @@ export const Home = () => {
   </div>
   </div>
   <div class="entrar">
-  <button type="submit" id="startSesion">Entrar</button>
+  <button id="startSesion">Entrar</button>
   </div>
   <div class="forgetpw">
   <a href="">¿Olvidaste tu contraseña?</a>
   </div>
   <div class="extBtns">
-  <a href="" class="fbBtn"><img src="../img/fbbtn.png"></a>
-  <a href="" class="ggBtn"><img src="../img/googlebtn.png"></a>
+  <button id="fbL" class="fbBtn"><img src="../img/fbbtn.png"></button>
+  <button id="googleL" class="ggBtn"><img src="../img/googlebtn.png"></button>
   </div>
   </div>`;
 
   divHome.innerHTML = homePage;
+
+  const loginEmail = divHome.querySelector('#userEmailLogin').value;
+  const loginPassword = divHome.querySelector('#userPasswordLogin').value;
+  const loginS = divHome.querySelector('#startSesion');
+  loginS.addEventListener('click', () => {
+    loginWithEmailPassword(loginEmail, loginPassword);
+  });
 
   divHome.querySelector('#register').addEventListener('click', () => onNavigate('/register'));
   divHome.querySelector('#startSesion').addEventListener('click', ()=> onNavigate('/profile'));

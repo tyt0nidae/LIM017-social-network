@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { registerWithEmailAndPassword } from './auth.js'
+import { registerWithEmailAndPassword, registerWithGoogle } from './Auth.js'
 import { SaveDataUser } from './confi.js'
+
 
 export const Register = () => {
   const registerDiv = document.createElement('div');
@@ -17,14 +18,17 @@ export const Register = () => {
   <i class="fa-solid fa-user"></i>
     <input type="email" id="registerEmail" placeholder="Crea un usuario/correo electrónico"></imput>
   </div>
+  <p id="errorMessageE"></p>
   <div class="password">
   <i class="fa-solid fa-lock"></i>
     <input type="password" id="registerPassword" placeholder="Crea una contraseña"></imput>
   </div>
+  <p id="errorMessageP"></p>
   <div class="password">
   <i class="fa-solid fa-lock"></i>
-    <input type="password" placeholder="Repita su contraseña"></imput>
+    <input type="password" id="password2" placeholder="Repita su contraseña"></imput>
   </div>
+  <p id="errorNoMatchP"></p>
   <div class="user">
   <i class="fa-solid fa-user"></i>
     <input type="text" id="names" placeholder="Nombres"></imput>
@@ -51,27 +55,55 @@ export const Register = () => {
   </div>
   <div class="entrar">
     <button type="submit" id="regpage">Registrarse</button>
+    <button id="googleR" class="ggBtn"><img src="../img/googlebtn.png"></button>
+    <button id="fbR" class="fbBtn"><img src="../img/fbbtn.png"></button>
     <button id="goBack"><i class="fa-solid fa-circle-chevron-left"></i></button>
   </div>
   </div>`;
   registerDiv.innerHTML = registerBtn;
 
-  
   registerDiv.querySelector('#regpage').addEventListener('click', () => {
 
     const email = registerDiv.querySelector('#registerEmail').value;
     const registerWithP = registerDiv.querySelector('#registerPassword').value;
-    
+    const passwordR = registerDiv.querySelector('#password2').value;
+    const messageError = registerDiv.querySelector('#errorMessageE');
+    const messageErrorp = registerDiv.querySelector('#errorMessageP');
+    const messageErrorP2 = registerDiv.querySelector('#errorNoMatchP');
+    const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)([A-Za-z\d]){6,20}$/;
+    if (registerWithE === '') {
+      messageError.innerHTML = 'Ingrese un correo electronico valido';
+    } else {
+      messageError.remove();
+    }
+    if (passwordR !== registerWithP) {
+      messageErrorP2.innerHTML = 'Las contraseñas no coinciden';
+    } else {
+      messageErrorP2.remove();
+    }
+    if (validPassword.test !== registerWithP) {
+      messageErrorp.innerHTML = 'La contraseña no cumple con los parametros';
+    } else {
+      messageErrorp.remove();
+    }
+
     const userName = registerDiv.querySelector('#names');
     const lastName = registerDiv.querySelector('#lastNames');
     const gender = registerDiv.querySelector('#gender');
     const dateBirth = registerDiv.querySelector('#dateBirth');
 
+
     SaveDataUser(userName.value,lastName.value,gender.value, email, dateBirth.value);
     
     registerWithEmailAndPassword(email, registerWithP);
     
-  })
+  });
+
+
+  const registerWithGg = registerDiv.querySelector('#googleR');
+  registerWithGg.addEventListener('click', () => {
+    registerWithGoogle();
+  });
 
   registerDiv.querySelector('#goBack').addEventListener('click', () => onNavigate('/'));
   
