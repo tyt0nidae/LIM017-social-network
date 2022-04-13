@@ -1,13 +1,17 @@
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
-import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
-//import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-import { signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
-
+/* eslint-disable no-unused-vars */
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+// eslint-disable-next-line import/no-unresolved
+} from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
 import { app } from './confi.js';
 
 const auth = getAuth(app);
 
-export const registerWithEmailAndPassword = (email, password) =>{
+export const registerWithEmailAndPassword = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in
@@ -36,7 +40,7 @@ export const loginWithEmailPassword = (email, password) => {
 
 const provider = new GoogleAuthProvider(app);
 
-export const registerWithGoogle = ()=>{
+export const registerWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
