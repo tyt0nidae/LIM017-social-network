@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { Home } from './components/Home.js';
+import { profile } from './components/profile.js';
 import { Register } from './components/Register.js';
 
 const rootDiv = document.getElementById('root');
@@ -7,6 +8,7 @@ const rootDiv = document.getElementById('root');
 const routes = {
   '/': Home,
   '/register': Register,
+  '/profile': profile,
 };
 
 const component = routes[window.location.pathname];

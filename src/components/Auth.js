@@ -1,17 +1,23 @@
-/* eslint-disable no-unused-vars */
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-// eslint-disable-next-line import/no-unresolved
-} from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
-import { app } from './confi.js';
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
+//import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-const auth = getAuth(app);
+import { app } from './config.js';
+const provider = new GoogleAuthProvider(app);
 
-export const registerWithEmailAndPassword = (email, password) => {
+export const loginWithEmailPassword = (email, password) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    // Signed in
+      const user = userCredential.user;
+    // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
+
+export const registerWithEmailAndPassword = (email, password) =>{
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in
@@ -37,7 +43,6 @@ export const loginWithEmailPassword = (email, password) => {
       const errorMessage = error.message;
     });
 };
-
 const provider = new GoogleAuthProvider(app);
 
 export const registerWithGoogle = () => {

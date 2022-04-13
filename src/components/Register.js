@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { registerWithEmailAndPassword, registerWithGoogle } from './Auth.js';
+import { registerWithEmailAndPassword, registerWithGoogle } from './Auth.js'
+import { SaveDataUser } from './confi.js'
+
 
 export const Register = () => {
   const registerDiv = document.createElement('div');
@@ -29,15 +31,15 @@ export const Register = () => {
   <p id="errorNoMatchP"></p>
   <div class="user">
   <i class="fa-solid fa-user"></i>
-    <input type="text" placeholder="Nombres"></imput>
+    <input type="text" id="names" placeholder="Nombres"></imput>
   </div>
   <div class="user">
   <i class="fa-solid fa-user"></i>
-    <input type="text" placeholder="Apellidos"></imput>
+    <input type="text" id="lastNames" placeholder="Apellidos"></imput>
   </div>
   <div class="user">
   <i class="fa-solid fa-user"></i>
-    <input type="text" placeholder="Género"></imput>
+    <input type="text" id="gender" placeholder="Género"></imput>
   </div>
   <div class="place">
   <i class="fa-solid fa-location-dot"></i>
@@ -45,7 +47,7 @@ export const Register = () => {
   </div>
   <label for="date">Fecha de nacimiento:</label>
   <div class="date">
-    <input type="date"></imput>
+    <input type="date" id="dateBirth"></imput>
   </div>
   <div class="language">
   <i class="fa-solid fa-language"></i>
@@ -61,7 +63,8 @@ export const Register = () => {
   registerDiv.innerHTML = registerBtn;
 
   registerDiv.querySelector('#regpage').addEventListener('click', () => {
-    const registerWithE = registerDiv.querySelector('#registerEmail').value;
+
+    const email = registerDiv.querySelector('#registerEmail').value;
     const registerWithP = registerDiv.querySelector('#registerPassword').value;
     const passwordR = registerDiv.querySelector('#password2').value;
     const messageError = registerDiv.querySelector('#errorMessageE');
@@ -84,8 +87,18 @@ export const Register = () => {
       messageErrorp.remove();
     }
 
-    registerWithEmailAndPassword(registerWithE, registerWithP);
+    const userName = registerDiv.querySelector('#names');
+    const lastName = registerDiv.querySelector('#lastNames');
+    const gender = registerDiv.querySelector('#gender');
+    const dateBirth = registerDiv.querySelector('#dateBirth');
+
+
+    SaveDataUser(userName.value,lastName.value,gender.value, email, dateBirth.value);
+    
+    registerWithEmailAndPassword(email, registerWithP);
+    
   });
+
 
   const registerWithGg = registerDiv.querySelector('#googleR');
   registerWithGg.addEventListener('click', () => {
@@ -93,5 +106,6 @@ export const Register = () => {
   });
 
   registerDiv.querySelector('#goBack').addEventListener('click', () => onNavigate('/'));
+  
   return registerDiv;
 };
