@@ -1,6 +1,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, getDoc} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+    
     //import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,6 +20,10 @@
   
     // Initialize Firebase
     export const app = initializeApp(firebaseConfig);
-   export const db = getFirestore(app);
+    export const db = getFirestore(app);
+    export const SaveDataUser = (userName, lastName, gender, email, dateBirth) => {
+     addDoc(collection(db, 'users'), {userName, lastName, gender, email, dateBirth});
+    }
+    export const GetDataUser = () => getDoc(collection(db, 'users'));
    
     //const analytics = getAnalytics(app);
